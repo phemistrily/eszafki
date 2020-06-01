@@ -1,0 +1,31 @@
+.body {
+    font-size: 12px;
+    font-family: Inter;
+}
+.full-height {
+    padding-top: 35px;
+}
+.btn {
+    font-weight: bold !important;
+    &:hover {
+        font-weight: bold !important;
+        color: #141516;
+    }
+    color: #141516;
+    padding: 12px 20px;
+    border-radius: 2px;
+}
+.btn-primary {
+    background: #f1bc32;
+    border-color: #f1bc32;
+    &:hover {
+        background: #e1a60f;
+        border-color: #e1a60f;
+    }
+}
+.btn-link {
+}
+.menu-img {
+    padding-bottom: 4px;
+    padding-right: 5px;
+}
