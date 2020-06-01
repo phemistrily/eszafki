@@ -1,9 +1,15 @@
 .body {
     font-size: 12px;
     font-family: Inter;
+    color: #141516;
 }
+
+h1 {
+    line-height: 1;
+}
+
 .full-height {
-    padding-top: 35px;
+    padding-top: 25px;
 }
 .btn {
     font-weight: bold !important;
@@ -11,21 +17,39 @@
         font-weight: bold !important;
         color: #141516;
     }
-    color: #141516;
+    color: #141516 !important;
     padding: 12px 20px;
     border-radius: 2px;
 }
-.btn-primary {
-    background: #f1bc32;
-    border-color: #f1bc32;
-    &:hover {
-        background: #e1a60f;
-        border-color: #e1a60f;
-    }
-}
+// .btn-primary {
+//     background: #f1bc32;
+//     border-color: #f1bc32;
+//     &:hover {
+//         background: #e1a60f;
+//         border-color: #e1a60f;
+//     }
+//     &:focus {
+//         background: #e1a60f;
+//         border-color: #e1a60f;
+//     }
+//     &:active {
+//         background: #e1a60f !important;
+//         border-color: #e1a60f !important;
+//     }
+// }
 .btn-link {
 }
 .menu-img {
     padding-bottom: 4px;
     padding-right: 5px;
+}
+.logo {
+    padding-top: 10px;
+}
+.gray {
+    background: #f5f5f5;
+    border-radius: 2px;
+}
+.category {
+    min-height: 250px;
 }
