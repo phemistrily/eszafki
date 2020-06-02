@@ -52,4 +52,11 @@ h1 {
 }
 .category {
     min-height: 250px;
+    &-image {
+        text-align: center;
+    }
+    &-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
 }

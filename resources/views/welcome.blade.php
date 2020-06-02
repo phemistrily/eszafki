@@ -21,14 +21,13 @@
     <div class="col-10">
         <div class="row py-4">
             @foreach($users as $index => $user)
-            <div class="col-md-3 category @if($index%4 >= 0 && $index%4 < 3) pr-4 @endif @if($index%4 == 3) pl-4 @endif">
-                <div class="row gray">
-                    <div class="col-12">
-                        {{ $index % 4 }}
-                        {{ $user->name }} 
+            <div class="col-md-3  @if($index%4 >= 0 && $index%4 < 3) pr-4 @endif @if($index%4 == 3) pl-4 @endif">
+                <div class="row gray mb-4 category">
+                    <div class="col-12 category-image justify-content-center">
+                        <img class="header-img center-block" src="{{ asset('img/categories/default.png') }}" alt="header" />
                     </div>
-                    <div class="col-12">
-                        {{ $user->email }}
+                    <div class="col-12 category-title">
+                        {{ $user->name }}
                     </div>
                 </div>
             </div>

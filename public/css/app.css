@@ -10977,6 +10977,15 @@ h1 {
   min-height: 250px;
 }
 
+.category-image {
+  text-align: center;
+}
+
+.category-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .header {
   min-height: 300px;
 }

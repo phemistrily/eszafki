@@ -23,14 +23,14 @@
         <div class="flex-center position-ref full-height">
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <a href="{{ url('/') }}"><img class="logo" src="{{ asset('img/common/logo.svg') }}" alt="logo" /></a>
                     </div>
                     <div class="col-md-8 text-right">
                       @if (Route::has('login'))
                           <div class="top-right links">
                               @auth
-                                <button type="button" class="btn btn-link"><img src="{{ asset('img/common/dashboard.svg') }}" alt="dashboard" class="menu-img" /> DASHBOARD</button>
+                                <a href="{{ url('/') }}"><button type="button" class="btn btn-link"><img src="{{ asset('img/common/dashboard.svg') }}" alt="dashboard" class="menu-img" /> DASHBOARD</button></a>
                                 <button type="button" class="btn btn-link">
                                   <img src="{{ asset('img/common/person.svg') }}" alt="wyloguj" class="menu-img" /> WYLOGUJ
                                 </button>
