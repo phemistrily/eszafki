@@ -1,11 +1,35 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter" !important;
+}
+body {
+    overflow-x: hidden;
+}
 .body {
     font-size: 12px;
-    font-family: Inter;
+    font-family: "Inter" !important;
     color: #141516;
 }
 
 h1 {
     line-height: 1;
+}
+h2 {
+    font-size: 18px;
+    line-height: 24px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+a {
+    color: #141516;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        color: #141516;
+    }
 }
 
 .full-height {
@@ -50,13 +74,25 @@ h1 {
     background: #f5f5f5;
     border-radius: 2px;
 }
+.block-link {
+    :hover {
+        background: $focusedGray;
+    }
+}
 .category {
-    min-height: 250px;
+    height: 250px;
     &-image {
         text-align: center;
+        max-height: 150px;
     }
     &-title {
         font-size: 24px;
         font-weight: bold;
     }
+}
+.return_arrow {
+    padding: 20px;
+}
+.bread-navigation {
+    align-content: center;
 }

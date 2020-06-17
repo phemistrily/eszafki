@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\ProductCategory;
+use App\Product;
 use Illuminate\Http\Request;
 
-class ProductCategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $categories = ProductCategory::all();
-        return view('front.categories');
+        //
     }
 
     /**
@@ -42,32 +41,25 @@ class ProductCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProductCategory  $productCategory
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductCategory $productCategory)
+    public function show(Product $product)
     {
-        $subcategories = $productCategory->productSubcategories;
-        return view('front.categories')->with([
-            'subcategories' => $subcategories,
-            'slug' => $productCategory->slug,
-            'categoryName' => $productCategory->name
+        return view('front.product')->with([
+            'product' => $product,
+            'productSubcategory' => $product->productSubcategories[0],
+            'productCategory' => $product->productSubcategories[0]->productCategory
         ]);
-    }
-
-
-    private function getCategory($name)
-    {
-        //dd(ProductCategory::where('name', $name)->get());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProductCategory  $productCategory
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit(Product $product)
     {
         //
     }
@@ -76,10 +68,10 @@ class ProductCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProductCategory  $productCategory
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -87,10 +79,10 @@ class ProductCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProductCategory  $productCategory
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy(Product $product)
     {
         //
     }

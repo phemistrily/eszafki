@@ -12,7 +12,7 @@ class ProductCategoriesSeeder extends Seeder
      */
     public function run()
     {
-        ProductCategory::truncate();
+        DB::table('product_categories')->delete();
         ProductCategory::create(['name' => 'Meble kuchenne', 'slug' => 'meble_kuchenne']);
         ProductCategory::create(['name' => 'Meble łazienkowe', 'slug' => 'meble_lazienkowe']);
         ProductCategory::create(['name' => 'Szafy przesuwne', 'slug' => 'szafy_przesuwne']);

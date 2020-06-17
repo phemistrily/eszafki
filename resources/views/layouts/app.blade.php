@@ -20,8 +20,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
     <body>
+        @if (request()->path() != 'login')
         <div class="flex-center position-ref full-height">
-            <div class="container">
+            <div class="row justify-content-center">
+            <div class="col-10">
                 <div class="row justify-content-md-center">
                     <div class="col-md-4">
                         <a href="{{ url('/') }}"><img class="logo" src="{{ asset('img/common/logo.svg') }}" alt="logo" /></a>
@@ -31,9 +33,11 @@
                           <div class="top-right links">
                               @auth
                                 <a href="{{ url('/') }}"><button type="button" class="btn btn-link"><img src="{{ asset('img/common/dashboard.svg') }}" alt="dashboard" class="menu-img" /> DASHBOARD</button></a>
-                                <button type="button" class="btn btn-link">
-                                  <img src="{{ asset('img/common/person.svg') }}" alt="wyloguj" class="menu-img" /> WYLOGUJ
-                                </button>
+                                <a href="{{ url('/logout') }}">
+                                    <button type="button" class="btn btn-link">
+                                        <img src="{{ asset('img/common/person.svg') }}" alt="wyloguj" class="menu-img" /> WYLOGUJ
+                                    </button>
+                                </a>
                                 <button type="button" class="btn btn-primary">KOSZYK</button>
                               @else
                                 <a href="{{  route('login') }}"><button type="button" class="btn btn-primary">Zaloguj</button></a>
@@ -48,7 +52,9 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
+        @endif
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -62,11 +68,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -94,7 +95,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="@if (!Route::has('login')) py-4 @endif">
             @yield('content')
         </main>
     </div>

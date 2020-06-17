@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCategory extends Model
+class Product extends Model
 {
     public function productSubcategories()
     {
-        return $this->hasMany(ProductSubcategory::class);
+        return $this->belongsToMany(ProductSubcategory::class, 'subcat_for_prod');
     }
 }

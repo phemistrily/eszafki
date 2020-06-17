@@ -23,5 +23,16 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
     Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
 });
 
-Route::resource('category', 'ProductCategoryController',
-                ['only' => ['index', 'show']]);
+
+Route::resource('category', 'ProductCategoryController')->only([
+    'index'
+]);
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+Route::get('category/{product_category:slug}', 'ProductCategoryController@show');
+
+Route::get('subcategory/{product_subcategory:slug}', 'ProductSubcategoryController@show');
+
+Route::get('product/{product:id}', 'ProductController@show');
