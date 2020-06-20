@@ -17,14 +17,14 @@
       </div>
       <div class="row py-4">
         @foreach($products as $index => $product)
-        <div class="col-lg-3  @if($index%4 >= 0 && $index%4 < 3) pr-4 @endif @if($index%4 == 3) pl-4 @endif">
+        <div class="col-md-3  @if($index%4 >= 0 && $index%4 < 3) pr-md-5 @endif @if($index%4 == 3) pl-md-4 @endif">
             <a class="block-link" href="{{ '/product/'.$product['id'] }}">
                 <div class="row gray mb-4 category">
                     <div class="col-12 category-image justify-content-center">
                         <img class="header-img center-block" src="{{ asset('img/categories/default.png') }}" alt="header" />
                     </div>
-                    <div class="col-12 category-title">
-                        <div style="margin: 10px 24px;">{{ $product->name }}</div>
+                    <div class="col-12 category-title  category-title d-flex align-items-end">
+                        <div style="margin: 10px 9px;">{{ $product->name }}</div>
                     </div>
                 </div>
             </a>

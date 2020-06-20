@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
     <body>
-        @if (request()->path() != 'login')
+        @if (request()->path() != 'login' && request()->path() != 'password/reset')
         <div class="flex-center position-ref full-height">
             <div class="row justify-content-center">
             <div class="col-10">
@@ -38,7 +38,7 @@
                                         <img src="{{ asset('img/common/person.svg') }}" alt="wyloguj" class="menu-img" /> WYLOGUJ
                                     </button>
                                 </a>
-                                <button type="button" class="btn btn-primary">KOSZYK</button>
+                                <a href="{{  route('basket') }}"><button type="button" class="btn btn-primary"><img src="{{ asset("/img/common/cart.svg") }}" alt="koszyk"> KOSZYK</button></a>
                               @else
                                 <a href="{{  route('login') }}"><button type="button" class="btn btn-primary">Zaloguj</button></a>
           
@@ -95,7 +95,7 @@
             </div>
         </nav>
 
-        <main class="@if (!Route::has('login')) py-4 @endif">
+        <main class="@if (request()->path() != 'login' && request()->path() != 'password/reset') py-4 @endif">
             @yield('content')
         </main>
     </div>

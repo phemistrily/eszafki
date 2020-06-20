@@ -8,7 +8,6 @@ body {
     overflow-x: hidden;
 }
 .body {
-    font-size: 12px;
     font-family: "Inter" !important;
     color: #141516;
 }
@@ -17,7 +16,7 @@ h1 {
     line-height: 1;
 }
 h2 {
-    font-size: 18px;
+    font-size: 24px;
     line-height: 24px;
     font-style: normal;
     font-weight: 600;
@@ -32,6 +31,27 @@ a {
     }
 }
 
+[data-toggle="collapse"] {
+    &.collapsed .if-not-collapsed {
+         display: none;
+    }
+    &:not(.collapsed) .if-collapsed {
+         display: none;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
 .full-height {
     padding-top: 25px;
 }
@@ -44,6 +64,18 @@ a {
     color: #141516 !important;
     padding: 12px 20px;
     border-radius: 2px;
+}
+.btn-secondary {
+    border-color: $primary;
+    &:hover {
+        border-color: $primary;
+    }
+    &:focus {
+        border-color: $primary;
+    }
+    &:active {
+        border-color: $primary;
+    }
 }
 // .btn-primary {
 //     background: #f1bc32;
@@ -61,7 +93,16 @@ a {
 //         border-color: #e1a60f !important;
 //     }
 // }
-.btn-link {
+.btn-light {
+    background: $secondary !important;
+    border-color: 1px solid $secondary !important;
+    &.active {
+        border-color:$primary !important;
+        background: $secondary;
+    }
+    &:hover {
+        background: $secondary;
+    }
 }
 .menu-img {
     padding-bottom: 4px;
@@ -95,4 +136,82 @@ a {
 }
 .bread-navigation {
     align-content: center;
+}
+.modal-header {
+    border-bottom: 1px solid $secondary;
+}
+.modal-footer {
+    border-top: 1px solid $secondary;
+}
+
+input,
+textarea {
+    border: 1px solid #eeeeee;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 10px;
+}
+
+input[type="button"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.input-group {
+    clear: both;
+    margin: 15px 0;
+    position: relative;
+}
+
+.input-group input[type="button"] {
+    background-color: #eeeeee;
+    min-width: 38px;
+    width: auto;
+    transition: all 300ms ease;
+}
+
+.input-group .button-minus,
+.input-group .button-plus {
+    font-weight: bold;
+    height: 38px;
+    padding: 0;
+    width: 38px;
+    position: relative;
+}
+
+.input-group .quantity-field {
+    position: relative;
+    height: 38px;
+    left: -6px;
+    text-align: center;
+    width: 62px;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0 0 5px;
+    resize: vertical;
+}
+
+.button-plus {
+    left: -13px;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+}
+.card-front {
+    border: none;
+    background: $secondary;
+}
+.modal-lg {
+    max-width: 80%;
+}
+.form-radio {
+    display : none;
 }

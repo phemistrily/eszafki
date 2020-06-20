@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        app(BasketController::class)->checkIsBasket();
         $categories = ProductCategory::all();
         return view('welcome')->with('categories', $categories);
     }

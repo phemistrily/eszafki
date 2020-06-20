@@ -45,7 +45,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 align-right">
                             @if (Route::has('password.request'))
                                 <a style="color: #F1BC32;" href="{{ route('password.request') }}">
                                     <b>{{ __('Zapomniałeś hasła') }}</b>

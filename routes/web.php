@@ -36,3 +36,7 @@ Route::get('category/{product_category:slug}', 'ProductCategoryController@show')
 Route::get('subcategory/{product_subcategory:slug}', 'ProductSubcategoryController@show');
 
 Route::get('product/{product:id}', 'ProductController@show');
+
+Route::get('basket', 'BasketController@index')->name('basket');
+
+Route::post('basket/product', 'BasketController@store')->name('addProductToBasket');

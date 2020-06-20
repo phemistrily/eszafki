@@ -21,14 +21,14 @@
     <div class="col-10">
         <div class="row py-4">
             @foreach($categories as $index => $category)
-            <div class="col-lg-3  @if($index%4 >= 0 && $index%4 < 3) pr-4 @endif @if($index%4 == 3) pl-4 @endif">
+            <div class="col-md-3  @if($index%4 >= 0 && $index%4 < 3) pr-md-5 @endif @if($index%4 == 3) pl-md-4 @endif">
                 <a class="block-link" href="{{ 'category/'.$category['slug'] }}">
                     <div class="row gray mb-4 category">
                         <div class="col-12 category-image justify-content-center">
                             <img class="header-img center-block" src="{{ asset('img/categories/default.png') }}" alt="header" />
                         </div>
-                        <div class="col-12 category-title">
-                            <div style="margin: 10px 24px;">{{ $category->name }}</div>
+                        <div class="col-12 category-title d-flex align-items-end">
+                            <div style="margin: 10px 9px;">{{ $category->name }}</div>
                         </div>
                     </div>
                 </a>

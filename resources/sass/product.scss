@@ -1,0 +1,16 @@
+.front-card {
+    height: 250px;
+    border: none;
+}
+.basket-table {
+    min-width: 1000px;
+    td {
+        vertical-align: middle !important;
+    }
+    tr {
+        border: 4px solid white;
+    }
+}
+.selected-front {
+    background: $primary;
+}
