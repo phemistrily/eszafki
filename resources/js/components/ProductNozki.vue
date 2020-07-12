@@ -8,10 +8,30 @@
             </button>
         </div>
         <div class="modal-body">
+            <div class="table-responsive">
+            <table class="table table-nozki">
+                <thead>
+                    <tr>
+                    <th scope="col">Wysokość (mm)</th>
+                    <th scope="col">Możliwość regulacji (mm)</th>
+                    <th scope="col">Nr artykułu</th>
+                    </tr>
+                </thead>
+                <tbody class="table-nozki-body">
+                    <tr v-for="(nozka, index) in nozki" :key="nozka.id"
+                    :class="{ 'selected-nozka': selectedNozka.id == nozka.id }"
+                    @click="selectNozki(nozka)">
+                    <th scope="row">{{ nozka.height }} </th>
+                    <td>{{ nozka.min_height }} - {{ nozka.max_height }}</td>
+                    <td>{{ nozka.name }}</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-            <button type="button" class="btn btn-primary">Wybierz</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="cancelNozki">Anuluj</button>
+            <button type="button" class="btn btn-primary change-form"  data-dismiss="modal" @click="acceptNozki">Wybierz</button>
         </div>
         </div>
     </div>
@@ -20,30 +40,30 @@
 <script>
 export default {
     props: {
-        fronts: { type: Array }
+        nozki: { type: Array }
     },
     data: () => ({
-        chosedFront: false,
-        selectedFront: false
+        chosedNozka: false,
+        selectedNozka: false
     }),
     mounted() {
-        if (this.fronts.length > 1) {
-            this.selectedFront = this.fronts[0];
-            this.chosedFront = this.fronts[0];
-            this.$emit("modal-select-front", this.selectedFront);
+        if (this.nozki.length > 1) {
+            this.selectedNozka = this.nozki[0];
+            this.chosedNozka = this.nozki[0];
+            this.$emit("modal-select-nozki", this.selectedNozka);
         }
     },
     methods: {
-        selectFront(front) {
-            this.selectedFront = front;
+        selectNozki(nozka) {
+            this.selectedNozka = nozka;
         },
-        acceptFront() {
-            this.chosedFront = this.selectedFront;
-            this.$emit("modal-select-front", this.chosedFront);
+        acceptNozki() {
+            this.chosedNozka = this.selectedNozka;
+            this.$emit("modal-select-nozki", this.chosedNozka);
         },
-        cancelFront() {
-            this.selectedFront = this.chosedFront;
-            this.$emit("modal-select-front", this.selectedFront);
+        cancelNozki() {
+            this.selectedNozka = this.chosedNozka;
+            this.$emit("modal-select-nozki", this.selectedNozka);
         }
     }
 };

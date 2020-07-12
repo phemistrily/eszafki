@@ -185,6 +185,15 @@ input::-webkit-inner-spin-button {
     position: relative;
 }
 
+.input-group .button-minuss,
+.input-group .button-pluss {
+    font-weight: bold;
+    height: 38px;
+    padding: 0;
+    width: 38px;
+    position: relative;
+}
+
 .input-group .quantity-field {
     position: relative;
     height: 38px;
@@ -198,6 +207,9 @@ input::-webkit-inner-spin-button {
 }
 
 .button-plus {
+    left: -13px;
+}
+.button-pluss {
     left: -13px;
 }
 

@@ -40,3 +40,13 @@ Route::get('product/{product:id}', 'ProductController@show');
 Route::get('basket', 'BasketController@index')->name('basket');
 
 Route::post('basket/product', 'BasketController@store')->name('addProductToBasket');
+
+Route::delete('basket/product/{basket_product:id}', 'BasketController@deleteProduct')->name('deleteProductFromBasket');
+
+Route::post('basket/product/increment/{basket_product:id}', 'BasketController@incrementProduct')->name('incrementProduct');
+Route::post('basket/product/decrement/{basket_product:id}', 'BasketController@decrementProduct')->name('decrementProduct');
+
+Route::get('/product/{productId}/price', 'ProductController@getProductPrice')->name('refreshPrice');
+
+Route::post('order/{basket}', 'BasketController@sendOrder');
+

@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="app">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" id="product-page">
         <div class="col-10">
             <div class="row bread-navigation">
                 <div class="col-12" style="padding-left: 0px;">
@@ -15,14 +15,14 @@
                     </div>
                 </div>
             </div>
-            <form action="/basket/product" method="POST">
+            <form id="product-form" action="/basket/product" method="POST">
                 @csrf
                 <input type="hidden" value={{ $product['id'] }} name="product_id" />
             <div class="row py-4">
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-12">
-                            <img src="{{ asset("/img/product/exampleProduct.png") }}" alt="">
+                        <div class="col-md-12 px-0 pb-4">
+                            <img class="col-12 pl-0" src="{{ asset("/img/product/exampleProduct.png") }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -87,10 +87,7 @@
                                                 <label for="height" class="col-md-4 col-xs-12 col-5 col-form-label" style="padding-top: 2px;">
                                                     <img src="{{ asset('img/product/nozka.svg') }}" alt="nóżka" class="menu-img" />
                                                     <span>Nóżki</span></label>
-                                                <div class="col-md-5 col-xs-8 col-5" style= "padding-top: 7px; padding-left: 0px;">
-                                                    <input type="hidden" name="nozki" value="1" />
-                                                    <span><b>125 cm</b> (regulacja 114-145)</span>
-                                                </div>
+                                                <selected-nozka :selected="selectedNozki"></selected-nozka>
                                                 <div class="col-md-2 col-xs-4 col-2" style="padding-top: 7px; padding-left: 0px;">
                                                     <button type="button" class="btn btn-secondary" style="margin-top: -11px;" data-toggle="modal" data-target="#nozkiModal">
                                                         Wybierz
@@ -139,16 +136,26 @@
                                 </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        <div class="row py-4 row justify-content-end">
-            
-            <div class="col-md-6">
-                <div class="row">
+                <div class="row mt-4">
+                <div class="gray pl-5 pt-4 pb-0" style="width: calc(100% - 15px);">
                     <product-summary></product-summary>
+                        <div class="form-group row">
+                            <label for="" class="col-md-4 col-5 col-form-label" style="padding-top: 20px;"><span>Liczba sztuk</span></label>
+                            <div class="col-md-8 col-7" style= "padding-left: 0px;">
+                                <div class="input-group">
+                                    <input type="button" @click="substractQuantity" value="-" class="button-minuss" data-field="quantity">
+                                    <input type="number" step="1" min="1" v-bind:value="quantity" @input="setQuantity" @change="setQuantity" name="quantity" class="quantity-field">
+                                    <input type="button" @click="additionQuantity" value="+" class="button-pluss" data-field="quantity">
+                                    <button class="btn btn-primary" type="submit" style="margin-top: -5px;">
+                                        <img src="/img/common/cart.svg" alt="dodaj do koszyka"> Dodaj do koszyka
+                                    </button>
+                                </div>       
+                            </div>
+                        </div>
+                    </div>
+                </div>    
                 </div>
             </div>
-        </div>
         </form>
         </div>
 <!-- Modal -->
@@ -158,8 +165,74 @@
 
 <!-- Modal -->
 <div class="modal fade" id="nozkiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    
+    <product-nozki @modal-select-nozki="selectNozki" :nozki="{{ $feets }}"></product-nozki>
 </div>
 
+<div class="modal fade" id="summary-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title"><b>Dodano produkt do koszyka</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row my-5">
+                <div class="col-md-3 col-12"></div>
+                <div class="col-md-9 col-12">
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <b style="font-size: 24px;">Szafka wisząca prosta</b>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-4">
+                                    Wymiary <br />
+                                    Nóżki <br />
+                                    Front <br />
+                                    <br />
+                                    Akcesoria <br />
+                                    Drzwiczki <br />
+                                    Uwagi <br />
+                                </div>
+                                <div class="col-8">
+                                    <b><span id="summary-dimensions"></span><br />
+                                    <span id="summary-nozki"></span><br />
+                                    <span id="summary-front"></span><br />
+                                    <br />
+                                    <span id="summary-akcesoria"></span><br />
+                                    <span id="summary-doors"></span><br />
+                                    <span id="summary-uwagi"></span><br /></b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-4">
+                                    Brutto <br />
+                                    Netto <br />
+                                    <br />
+                                    Ilość <br />
+                                </div>
+                                <div class="col-8 align-right">
+                                    <b><span id="summary-brutto"></span><br />
+                                    <span id="summary-netto"></span><br />
+                                    <br />
+                                    <span id="summary-quantity"></span><br /></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Dodaj kolejny produkt</button>
+            <button type="button" class="btn btn-primary change-form" data-dismiss="modal">Zobacz koszyk</button>
+        </div>
+        </div>
+    </div>
+</div>
 </div> <!-- end app -->
 @endsection

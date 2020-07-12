@@ -6,7 +6,7 @@
     <div class="row bread-navigation">
         <div class="col-12" style="padding-left: 0px;">
             <a class="block-link" href="/">
-                <img class="gray return_arrow" src="http://eszafki.localhost/img/common/left_arrow.svg" alt="header" style="float: left;">
+                <img class="gray return_arrow" src="/img/common/left_arrow.svg" alt="header" style="float: left;">
             </a>
             <div class="gray" style="display: flex; margin-left: 65px;height: 58px;">
                 <div style="margin-left: 30px; margin-top: 19px;">

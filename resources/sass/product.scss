@@ -4,6 +4,7 @@
 }
 .basket-table {
     min-width: 1000px;
+    background: #FBFBFB;
     td {
         vertical-align: middle !important;
     }
@@ -13,4 +14,21 @@
 }
 .selected-front {
     background: $primary;
+}
+.selected-nozka {
+    background: $primary !important;
+}
+.table-nozki {
+    tr {
+        border: 4px solid white;
+    }
+}
+.table-nozki-body {
+    cursor: pointer;
+}
+.table-nozki-body tr:hover {
+    background: $secondary;
+}
+.dark-gray {
+    background: #F5F5F5;
 }
